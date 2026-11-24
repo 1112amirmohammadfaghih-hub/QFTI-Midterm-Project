@@ -1,0 +1,2327 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[    100483,       2317]
+NotebookOptionsPosition[     96574,       2246]
+NotebookOutlinePosition[     96982,       2262]
+CellTagsIndexPosition[     96939,       2259]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RunProcess", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<C:\\\\Windows\\\\System32\\\\wsl.exe\>\"", ",", "\"\<-e\>\"",
+      ",", "\"\<bash\>\"", ",", "\"\<-lc\>\"", 
+     ",", "\"\<echo FIRE7_CONNECTION_OK\>\""}], "}"}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{4.004452407715111*^9, 4.0044524087809753`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"e24b0f09-bd6d-a142-afa0-744fffffd7cc"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"ExitCode\"\>", "\[Rule]", "0"}], ",", 
+   RowBox[{"\<\"StandardOutput\"\>", 
+    "\[Rule]", "\<\"FIRE7_CONNECTION_OK\\n\"\>"}], ",", 
+   RowBox[{"\<\"StandardError\"\>", "\[Rule]", "\<\"\"\>"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{4.0044524181268444`*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"4701b657-6a96-304a-9f31-0dbb1ddaba85"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RunProcess", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<C:\\\\Windows\\\\System32\\\\wsl.exe\>\"", ",", "\"\<-e\>\"",
+      ",", "\"\<bash\>\"", ",", "\"\<-lc\>\"", 
+     ",", "\"\<cd /mnt/f/fire-main/FIRE7 && ./bin/FIRE7 --help\>\""}], "}"}], 
+   "]"}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{4.004452446091772*^9, 4.004452449450676*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"8ec13bf7-937d-b74c-9ec2-0693f0b3e62e"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"ExitCode\"\>", "\[Rule]", "0"}], ",", 
+   RowBox[{"\<\"StandardOutput\"\>", 
+    "\[Rule]", "\<\"Usage: ./bin/(FIRE7|FIRE7p|FLAME7|FLAME7p) \
+[options]\\n\\t-h, --help                 \\tShow this help.\\n\\t-p, \
+--parallel             \\tIndicates that multiple instances of FIRE can be \
+called and forces change of database paths\\n\\t-q, --quiet                \
+\\tSuppress most of output\\n\\t-Q, --QUIET                \\tSuppress even \
+more of output\\n\\t-l <value>, --calc <value> \\tSpecifies siplification \
+library (equal to #calc setting) \\n\\t                           \\tPossible \
+values are: fermat; maple; math; pari; \\n\\t                           \
+\\t(*) - is shipped with FIRE but might require a ./configure option to \
+work\\n\\t                           \\t(for example, for libraries such as \
+cocoa and ginac not having a built-in prompt we build a wrapper)\\n\\t        \
+                   \\tuse --help calc to see the list of default binary paths\
+\\n\\t--calc_options <value>     \\tComma-separated options to be passed to \
+calc library with fuel::setOption\\n\\t-L <value>, --calc_path \
+<value>\\tUser-set path to the library binary, overrides default \
+values\\n\\t-c <value>, --config <value>\\tObligatory option, provide path to \
+the config file\\n\\t-i <value>, --in <value>   \\tPipe number for writing \
+data from the master process\\n\\t-o <value>, --out <value>  \\tPipe number \
+for writing data to the master process\\n\\t-s <value>, --sector \
+<value>\\tObligatory option for the FLAME process, indicates the sector to \
+work in. Negative numbers are used for substitutions\\n\\t-t <value>, \
+--thread <value>\\tThread number to print for the FLAME process\\n\\t-b \
+<value>, --bucket <value>\\tKyotocabinet bucket setting, overrides config \
+value (equal to the #bucket setting)\\n\\t-d <value>, --database \
+<value>\\tProvides path to the database folder, overrides config \
+value\\n\\t-v <value>, --variables <value>\\tUnderscore_separated_values, \
+gives values to variables, in prime mode laste number is used as the number \
+of the hardcoded big primes\\n\\t-P <value>, --plan <value> \\tSpecify the \
+path to the file with plan.\\n\\t-W <value>, --warmup <value>\\tSpecify the \
+path to the file saving warmup information for linear system (Defaults to \
+appending .warmup to the plan file).\\n\\t--positive <value>         \
+\\tSpecify the positive indices. (equal to #positive)\\n\\t-m, --masters      \
+        \\tIf without argument, sets saving only masters, not results. If \
+with argument, (number-number) specifies a range of master integrals that are \
+to be non-zero (equal to #masters)\\n\\t-a <value>, --printall <value>\\tfor \
+debugging, prints integrals involved\\n\\t-O <value>, --output_override \
+<value>\\toverrides path to the output table\\n\\t-V, --large_variables      \
+\\tVariables passed from arguments can be big and thus external library \
+should be used for modular\\n\\t-N, --no_positive_increase \\texperimental, \
+try to force to get no positive increase when seeding\\n\\t-I <value>, \
+--integrals <value>\\tSpecify the path to the file with input integrals. The \
+config file should have the #integrals line without file \
+specification\\n\\t--forward                  \\tRun only the forward stage \
+(reduction) (equal to #forward)\\n\\t--backward                 \\tRun only \
+the backward stage (substitutions) (equal to #backward)\\n\\t-F <value>, \
+--folders <value>\\tSpecify whether the Tables should be saved into a \
+subfolder depending on passed variables powers\\n\\t--ids_first               \
+ \\tchanges tables format putting ids at first place\\n\\t--virtual_in_input  \
+       \\tNO EXPLANATION YET!\\n\"\>"}], ",", 
+   RowBox[{"\<\"StandardError\"\>", "\[Rule]", "\<\"\"\>"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{4.004452450521826*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"c725ddc7-a6d7-d948-9b72-d178aeb5347f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"cd", "/", "mnt"}], "/", "f"}], "/", "fire"}], "-", 
+    RowBox[{"main", "/", "FIRE7"}]}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"find", ".", 
+      RowBox[{"-", "maxdepth"}]}], " ", "3"}], "-", 
+    RowBox[{"type", " ", "f", " ", 
+     RowBox[{"\\(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "name"}], " ", "\"\<FIRE*.m\>\""}], "-", "o", "-", 
+       RowBox[{"name", " ", "\"\<*.wl\>\""}]}], "\\)"}]}], "-", "print"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{4.004452475136486*^9, 4.0044524788208714`*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"a9d6cb24-a16f-f945-bbae-08dc1a603ba6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   FractionBox["main", "FIRE7"]}], "+", 
+  FractionBox["cd", 
+   RowBox[{"f", " ", "fire", " ", "mnt"}]]}]], "Output",
+ CellChangeTimes->{4.0044524795352745`*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"ffa3da92-ce71-0f41-9e20-fbbc1ccf5e7f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "print"}], "+", 
+  RowBox[{"3", " ", 
+   RowBox[{"find", ".", 
+    RowBox[{"(", 
+     RowBox[{"-", "maxdepth"}], ")"}]}]}], "-", 
+  RowBox[{"f", " ", "type", " ", 
+   RowBox[{"RowBox", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"RowBox", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"RowBox", "[", 
+          RowBox[{"{", 
+           RowBox[{"\<\"-\"\>", ",", "\<\"name\"\>"}], "}"}], "]"}], 
+         ",", "\<\"\\\"FIRE*.m\\\"\"\>"}], "}"}], "]"}], ",", "\<\"-\"\>", 
+      ",", "\<\"o\"\>", ",", "\<\"-\"\>", ",", 
+      RowBox[{"RowBox", "[", 
+       RowBox[{"{", 
+        RowBox[{"\<\"name\"\>", ",", "\<\"\\\"*.wl\\\"\"\>"}], "}"}], "]"}]}],
+      "}"}], "]"}]}]}]], "Output",
+ CellChangeTimes->{4.0044524795352745`*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"508894b7-2afb-1647-9320-f30ba7cce71d"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  4.0044528637447395`*^9},ExpressionUUID->"921813b5-82a2-b742-ac6c-\
+8cf50cd97e4b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"?", "Burn"}], "\n", 
+ RowBox[{"?", "EnumerateRealSectors"}], "\n", 
+ RowBox[{"?", "AllProblems"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{4.0044528698473244`*^9, 4.0044528701220016`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"a62f3a60-c386-0646-9187-d7ebf61cf637"],
+
+Cell[BoxData[
+ RowBox[{"Missing", "[", 
+  RowBox[{"\<\"UnknownSymbol\"\>", ",", "\<\"Burn\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{4.004452871272585*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"2225fc27-b369-dd45-9431-54c93f58e316"],
+
+Cell[BoxData[
+ RowBox[{"Missing", "[", 
+  RowBox[{"\<\"UnknownSymbol\"\>", ",", "\<\"EnumerateRealSectors\"\>"}], 
+  "]"}]], "Output",
+ CellChangeTimes->{4.0044528712735767`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"6cacf628-fb4d-f64f-bfd5-3b88dfb6aac1"],
+
+Cell[BoxData[
+ RowBox[{"Missing", "[", 
+  RowBox[{"\<\"UnknownSymbol\"\>", ",", "\<\"AllProblems\"\>"}], 
+  "]"}]], "Output",
+ CellChangeTimes->{4.0044528712746162`*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"3ce6f2b4-f271-8540-ad67-8eef63fc5ce3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{"$Version", "\n", "$System", "\n", 
+ RowBox[{"Directory", "[", "]"}]}], "Input",
+ CellChangeTimes->{{4.0044529573246536`*^9, 4.0044529573246536`*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"6dce8cee-48bd-1340-8ed0-7ff421a9aab4"],
+
+Cell[BoxData["\<\"15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)\"\>"], \
+"Output",
+ CellChangeTimes->{4.0044529582332783`*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"51ae58d1-ed92-c943-9f41-c5c25254af65"],
+
+Cell[BoxData["\<\"Microsoft Windows (64-bit)\"\>"], "Output",
+ CellChangeTimes->{4.0044529582332783`*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"a5e0cfec-e9e4-7c47-a915-cb6c667e847d"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\king\"\>"], "Output",
+ CellChangeTimes->{4.0044529582332783`*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"affff84a-4f81-b340-bae2-07aa8b416678"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetDirectory", "[", "\"\<F:\\\\fire-main\\\\FIRE7\>\"", "]"}], 
+    ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{"FileExistsQ", "[", "\"\<FIRE7.m\>\"", "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{4.004453078730463*^9, 4.004453080964323*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"f242cae9-fd59-3844-9760-02fdce0c69cd"],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{4.00445308189633*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"4d40d69f-7da9-944d-bed4-6eacdaaa20bb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Get", "[", "\"\<FIRE7.m\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{4.0044530866038113`*^9, 4.0044530877794056`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"94dc3f35-d8f8-9a4f-b155-b53b91b74276"],
+
+Cell[BoxData["\<\"FIRE, version 7.1\"\>"], "Print",
+ CellChangeTimes->{4.0044530887772503`*^9},
+ CellLabel->
+  "During evaluation of \
+In[13]:=",ExpressionUUID->"1e6bfb12-aba8-794b-b708-43fbddc5d171"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"?", "FIRE`Burn"}], "\n", 
+   RowBox[{"?", "FIRE`Prepare"}], "\n", 
+   RowBox[{"?", "FIRE`LoadRules"}]}]}]], "Input",
+ CellChangeTimes->{{4.0044530965976505`*^9, 4.0044530978409576`*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"95d13d11-db18-844e-8908-d9abe5dbfbf6"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = True, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox[
+             TagBox[
+              TooltipBox[
+               StyleBox["\<\" Symbol\"\>", "InformationRowLabel",
+                StripOnInput->False],
+               "\"Symbol\"",
+               TooltipStyle->"TextStyling"],
+              Annotation[#, "Symbol", "Tooltip"]& ], "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\"FIRE`Burn\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  StyleBox["\<\" Definitions\"\>", "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"Definitions\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "Definitions", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    RowBox[{
+                    RowBox[{"Burn", "[", "]"}], ":=", 
+                    RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", "FIRE`Private`temp", "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{"Burning", ",", 
+                    RowBox[{
+                    RowBox[{"Print", "[", "\"FIRE already burning\"", "]"}], 
+                    ";", 
+                    RowBox[{"FIRE`Private`Retun", "[", "False", "]"}]}]}], 
+                    "]"}], ";", 
+                    RowBox[{"FIRE`Private`EnumerateSectors", "/@", 
+                    RowBox[{"FIRE`Private`AllProblems", "[", "]"}]}], ";", 
+                    RowBox[{"MaxDimension", "[", "]"}], ";", 
+                    RowBox[{"FIRE`Private`EnumerateRealSectors", "[", "]"}], 
+                    ";", 
+                    RowBox[{"Burning", "=", "True"}]}]}], "]"}]}]}, {" "}}, 
+                  GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}},
+           ScrollPosition->{0., 0.}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"FIRE`Burn\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"],
+               ImageSizeCache->{10., {2.67529296875, 7.32470703125}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"],
+               ImageSizeCache->{10., {2.67529296875, 7.32470703125}}]}, 
+              Dynamic[System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          LightDarkSwitched[
+           GrayLevel[0.8]], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox[
+             TagBox[
+              TooltipBox[
+               StyleBox["\<\" Symbol\"\>", "InformationRowLabel",
+                StripOnInput->False],
+               "\"Symbol\"",
+               TooltipStyle->"TextStyling"],
+              Annotation[#, "Symbol", "Tooltip"]& ], "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\"FIRE`Burn\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          LightDarkSwitched[
+           GrayLevel[0.8]], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[<|
+   "ObjectType" -> "Symbol", "Usage" -> "FIRE`Burn", "Documentation" -> None, 
+    "OwnValues" -> None, "UpValues" -> None, "DownValues" -> 
+    Information`InformationValueForm[
+     DownValues, FIRE`Burn, {
+      FIRE`Burn[] :> 
+       Module[{FIRE`Private`temp}, 
+         If[FIRE`Burning, Print["FIRE already burning"]; 
+           FIRE`Private`Retun[False]]; Map[FIRE`Private`EnumerateSectors, 
+           FIRE`Private`AllProblems[]]; FIRE`MaxDimension[]; 
+         FIRE`Private`EnumerateRealSectors[]; FIRE`Burning = True]}], 
+    "SubValues" -> None, "DefaultValues" -> None, "NValues" -> None, 
+    "FormatValues" -> None, "Options" -> None, "Attributes" -> {}, "FullName" -> 
+    "FIRE`Burn"|>, False]]], "Output",
+ CellChangeTimes->{4.0044530983324184`*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"478b42ce-6264-454f-ae4c-753d7c001969"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = True, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox[
+             TagBox[
+              TooltipBox[
+               StyleBox["\<\" Symbol\"\>", "InformationRowLabel",
+                StripOnInput->False],
+               "\"Symbol\"",
+               TooltipStyle->"TextStyling"],
+              Annotation[#, "Symbol", "Tooltip"]& ], "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\"FIRE`Prepare\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  StyleBox["\<\" Definitions\"\>", "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"Definitions\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "Definitions", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    RowBox[{
+                    RowBox[{"Prepare", "[", 
+                    RowBox[{"FIRE`Private`options", ":", 
+                    RowBox[{"OptionsPattern", "[", "FIRE", "]"}]}], "]"}], 
+                    ":=", 
+                    RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    
+                    RowBox[{"FIRE`Private`temp", ",", "FIRE`Private`temp2", 
+                    ",", "FIRE`Private`i", ",", "FIRE`Private`j", ",", 
+                    "FIRE`Private`dirs", ",", "FIRE`Private`s0", ",", 
+                    "FIRE`Private`s1", ",", "FIRE`Private`s2", ",", 
+                    "FIRE`Private`s3", ",", "FIRE`Private`startinglist2", ",",
+                     "FIRE`Private`k"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"ProblemNumber", "=", "0"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"!", 
+                    RowBox[{"ValueQ", "[", "Replacements", "]"}]}], ",", 
+                    RowBox[{"Replacements", "=", 
+                    RowBox[{"{", "}"}]}]}], "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"!", 
+                    RowBox[{"ValueQ", "[", "startinglist", "]"}]}], ",", 
+                    RowBox[{
+                    RowBox[{"startinglist", "=", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{
+                    RowBox[{"Outer", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"FIRE`Private`IBP", "[", 
+                    RowBox[{"#1", ",", "#2", ",", "FIRE`Private`options"}], 
+                    "]"}], "//.", "\[VeryThinSpace]", "Replacements"}], "&"}],
+                     ",", "Internal", ",", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{"Internal", ",", "External"}], "]"}]}], "]"}], 
+                    ",", "1"}], "]"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"OptionValue", "[", "\"LI\"", "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"startinglist", "=", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{"startinglist", ",", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"LII", "[", 
+                    RowBox[{
+                    
+                    RowBox[{"External", "\[LeftDoubleBracket]", 
+                    "FIRE`Private`i", "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"External", "\[LeftDoubleBracket]", 
+                    "FIRE`Private`j", "\[RightDoubleBracket]"}]}], "]"}], 
+                    "//.", "\[VeryThinSpace]", "Replacements"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"FIRE`Private`j", ",", 
+                    RowBox[{"FIRE`Private`i", "+", "1"}], ",", 
+                    RowBox[{"Length", "[", "External", "]"}]}], "}"}]}], 
+                    "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"FIRE`Private`i", ",", "1", ",", 
+                    RowBox[{
+                    RowBox[{"Length", "[", "External", "]"}], "-", "1"}]}], 
+                    "}"}]}], "]"}], ",", "1"}], "]"}]}], "]"}]}], ";"}]}], 
+                    "]"}]}]}], "]"}], ";", 
+                    RowBox[{"FIRE`Private`temp", "=", 
+                    RowBox[{"Select", "[", 
+                    RowBox[{
+                    RowBox[{"Variables", "[", "startinglist", "]"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Head", "[", "##1", "]"}], "===", "Symbol"}], 
+                    "&"}]}], "]"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ToLowerCase", "[", 
+                    RowBox[{"ToString", "[", "FIRE`Private`temp", "]"}], 
+                    "]"}], "=!=", 
+                    RowBox[{"ToString", "[", "FIRE`Private`temp", "]"}]}], 
+                    ",", 
+                    RowBox[{
+                    
+                    RowBox[{"Print", "[", 
+                    "\"WARNING! Fermat cannot handle capital letters, please \
+use other simplifiers\"", "]"}], ";", 
+                    RowBox[{"Print", "[", "FIRE`Private`temp", "]"}], ";"}]}],
+                     "]"}], ";", 
+                    RowBox[{
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    "=", 
+                    RowBox[{"Max", "@@", 
+                    RowBox[{"Apply", "[", 
+                    RowBox[{
+                    RowBox[{"##1", "&"}], ",", 
+                    RowBox[{
+                    RowBox[{"Cases", "[", 
+                    RowBox[{"startinglist", ",", 
+                    RowBox[{"FIRE`Private`Y", "[", "FIRE`Private`y_", "]"}], 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "\[Infinity]"}], "}"}]}], "]"}], 
+                    "\[Union]", 
+                    RowBox[{"Cases", "[", 
+                    RowBox[{"startinglist", ",", 
+                    RowBox[{"FIRE`Private`Ym", "[", "FIRE`Private`y_", "]"}], 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "\[Infinity]"}], "}"}]}], "]"}], 
+                    "\[Union]", 
+                    RowBox[{"Cases", "[", 
+                    RowBox[{"startinglist", ",", 
+                    RowBox[{"FIRE`Private`a", "[", "FIRE`Private`y_", "]"}], 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "\[Infinity]"}], "}"}]}], "]"}]}], ",", 
+                    RowBox[{"{", "1", "}"}]}], "]"}]}]}], ";", 
+                    RowBox[{"Print", "[", 
+                    RowBox[{"\"Dimension set to \"", ",", 
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}]}],
+                     "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"OptionValue", "[", "\"PositiveIndices\"", "]"}], 
+                    "===", "Automatic"}], ",", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`dirs", "=", 
+                    RowBox[{"FIRE`Private`AllDirections", "[", 
+                    RowBox[{
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    ",", 
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}]}],
+                     "]"}]}], ";"}], ",", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`dirs", "=", 
+                    RowBox[{"FIRE`Private`AllDirections", "[", 
+                    RowBox[{
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    ",", 
+                    
+                    RowBox[{"OptionValue", "[", "\"PositiveIndices\"", 
+                    "]"}]}], "]"}]}], ";"}]}], "]"}], ";", 
+                    RowBox[{"Clear", "[", 
+                    
+                    RowBox[{"SBasisL", ",", "SBasis0D", ",", "SBasis0C", ",", 
+                    "SBasis0L", ",", "SBasisA", ",", "SBasisD", ",", 
+                    "SBasisC", ",", "SBasisO", ",", "SBasisS", ",", "SBasisR",
+                     ",", "SBasisRL", ",", "SBasisM"}], "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Head", "[", "FIRE`Private`RegLine", "]"}], "===",
+                     "Symbol"}], ",", 
+                    RowBox[{
+                    RowBox[{"SBasisRL", "[", "ProblemNumber", "]"}], "=", 
+                    "0"}], ",", 
+                    RowBox[{
+                    RowBox[{"SBasisRL", "[", "ProblemNumber", "]"}], "=", 
+                    "FIRE`Private`RegLine"}]}], "]"}], ";", 
+                    RowBox[{"FIRE`Private`startinglist2", "=", 
+                    RowBox[{"Map", "[", 
+                    
+                    RowBox[{"FIRE`Private`KillDenominator", ",", 
+                    "startinglist", ",", 
+                    RowBox[{"{", "1", "}"}]}], "]"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Head", "[", "FIRE`Private`HeavyPoints", "]"}], 
+                    "===", "Symbol"}], ",", 
+                    RowBox[{
+                    RowBox[{"HPI", "[", "ProblemNumber", "]"}], "=", 
+                    RowBox[{"{", "}"}]}], ",", 
+                    RowBox[{
+                    RowBox[{"HPI", "[", "ProblemNumber", "]"}], "=", 
+                    "FIRE`Private`HeavyPoints"}]}], "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Head", "[", "FIRE`Private`RegLineShift", "]"}], 
+                    "===", "Symbol"}], ",", 
+                    RowBox[{"FIRE`Private`RegLineShift", "=", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{"4", "-", 
+                    RowBox[{"OptionValue", "[", "\"DVar\"", "]"}]}], 
+                    ")"}]}]}]}], "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"SBasisRL", "[", "ProblemNumber", "]"}], ">", 
+                    "0"}], ",", 
+                    RowBox[{"FIRE`Private`startinglist2", "=", 
+                    RowBox[{"Expand", "[", 
+                    
+                    RowBox[{"FIRE`Private`startinglist2", "/.", 
+                    "\[VeryThinSpace]", 
+                    RowBox[{
+                    
+                    RowBox[{"FIRE`Private`a", "[", "FIRE`Private`RegLine", 
+                    "]"}], "\[Rule]", 
+                    RowBox[{
+                    
+                    RowBox[{"FIRE`Private`a", "[", "FIRE`Private`RegLine", 
+                    "]"}], "+", "FIRE`Private`RegLineShift"}]}]}], "]"}]}]}], 
+                    "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Head", "[", "SYMMETRIES", "]"}], "===", 
+                    "Symbol"}], "&&", 
+                    RowBox[{
+                    RowBox[{"Head", "[", "FIRE`Private`ODDSYMMETRIES", "]"}], 
+                    "===", "Symbol"}], "&&", 
+                    RowBox[{
+                    
+                    RowBox[{"Head", "[", "FIRE`Private`CONDITIONALSYMMETRIES",
+                     "]"}], "===", "Symbol"}]}], ",", 
+                    RowBox[{"Print", "[", "\"No symmetries\"", "]"}]}], "]"}],
+                     ";", 
+                    RowBox[{"FIRE`Private`s0", "=", 
+                    RowBox[{"{", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Range", "[", 
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    "]"}], ",", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    "}"}]}], "]"}], ",", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    "}"}]}], "]"}]}], "}"}], "}"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Head", "[", "SYMMETRIES", "]"}], "===", 
+                    "Symbol"}], ",", 
+                    RowBox[{"FIRE`Private`s1", "=", 
+                    RowBox[{"{", "}"}]}], ",", 
+                    RowBox[{"FIRE`Private`s1", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"##1", ",", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    "}"}]}], "]"}], ",", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    "}"}]}], "]"}]}], "}"}], "&"}], ")"}], "/@", 
+                    
+                    RowBox[{"FIRE`Private`SymmetryGroup", "[", "SYMMETRIES", 
+                    "]"}]}]}]}], "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Head", "[", "FIRE`Private`ODDSYMMETRIES", "]"}], 
+                    "===", "Symbol"}], ",", 
+                    RowBox[{"FIRE`Private`s2", "=", 
+                    RowBox[{"{", "}"}]}], ",", 
+                    RowBox[{"FIRE`Private`s2", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    
+                    RowBox[{"##1", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"##1", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    "}"}]}], "]"}]}], "}"}], "&"}], ")"}], "/@", 
+                    "FIRE`Private`ODDSYMMETRIES"}]}]}], "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    
+                    RowBox[{"Head", "[", "FIRE`Private`CONDITIONALSYMMETRIES",
+                     "]"}], "===", "Symbol"}], ",", 
+                    RowBox[{"FIRE`Private`s3", "=", 
+                    RowBox[{"{", "}"}]}], ",", 
+                    RowBox[{"FIRE`Private`s3", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    
+                    RowBox[{"##1", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ExampleDimension", "[", "ProblemNumber", "]"}], 
+                    "}"}]}], "]"}], ",", 
+                    
+                    RowBox[{"##1", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}]}], "}"}], "&"}], ")"}], "/@", 
+                    "FIRE`Private`CONDITIONALSYMMETRIES"}]}]}], "]"}], ";", 
+                    RowBox[{
+                    RowBox[{"SBasisS", "[", "ProblemNumber", "]"}], "=", 
+                    RowBox[{"Join", "[", 
+                    
+                    RowBox[{"FIRE`Private`s0", ",", "FIRE`Private`s1", ",", 
+                    "FIRE`Private`s2", ",", "FIRE`Private`s3"}], "]"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"OptionValue", "[", "\"Parallel\"", "]"}], "===", 
+                    "True"}], "||", 
+                    RowBox[{"IntegerQ", "[", 
+                    RowBox[{"OptionValue", "[", "\"Parallel\"", "]"}], 
+                    "]"}]}], ",", 
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"OptionValue", "[", "\"Parallel\"", "]"}], "===", 
+                    "True"}], ",", 
+                    RowBox[{
+                    RowBox[{"LaunchKernels", "[", "]"}], ";"}], ",", 
+                    RowBox[{
+                    RowBox[{"LaunchKernels", "[", 
+                    RowBox[{"OptionValue", "[", "\"Parallel\"", "]"}], "]"}], 
+                    ";"}]}], "]"}], ";", 
+                    RowBox[{"DistributeDefinitions", "[", "\"FIRE`\"", "]"}], 
+                    ";", 
+                    RowBox[{"FIRE`Private`temp2", "=", 
+                    RowBox[{"ParallelMap", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`temp", "=", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    
+                    RowBox[{"OptionValue", "[", "\"AutoDetectRestrictions\"", 
+                    "]"}], "===", "True"}], ",", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`RestrictionsPossible", "[", 
+                    RowBox[{"FIRE`Private`SSector", "[", 
+                    RowBox[{"0", ",", "##1"}], "]"}], "]"}], "||", 
+                    RowBox[{"FIRE`Private`TestSectorZero", "[", 
+                    RowBox[{"##1", ",", "FIRE`Private`options"}], "]"}]}], 
+                    ",", 
+                    RowBox[{"FIRE`Private`RestrictionsPossible", "[", 
+                    RowBox[{"FIRE`Private`SSector", "[", 
+                    RowBox[{"0", ",", "##1"}], "]"}], "]"}]}], "]"}]}], ";", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"SBasisR", "[", 
+                    RowBox[{"ProblemNumber", ",", "##1"}], "]"}], ",", 
+                    "FIRE`Private`temp"}], "}"}]}], ")"}], "&"}], ",", 
+                    "FIRE`Private`dirs", ",", 
+                    RowBox[{"{", "1", "}"}]}], "]"}]}], ";", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"SBasisL", "[", 
+                    RowBox[{"ProblemNumber", ",", "##1"}], "]"}], "=", "0"}], 
+                    ";"}], ")"}], "&"}], ")"}], "/@", "FIRE`Private`dirs"}], 
+                    ";", 
+                    RowBox[{"Apply", "[", 
+                    RowBox[{"Set", ",", "FIRE`Private`temp2", ",", 
+                    RowBox[{"{", "1", "}"}]}], "]"}], ";"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"SBasisR", "[", 
+                    RowBox[{"ProblemNumber", ",", "##1"}], "]"}], "=", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    
+                    RowBox[{"OptionValue", "[", "\"AutoDetectRestrictions\"", 
+                    "]"}], "===", "True"}], ",", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`RestrictionsPossible", "[", 
+                    RowBox[{"FIRE`Private`SSector", "[", 
+                    RowBox[{"0", ",", "##1"}], "]"}], "]"}], "||", 
+                    RowBox[{"FIRE`Private`TestSectorZero", "[", 
+                    RowBox[{"##1", ",", "FIRE`Private`options"}], "]"}]}], 
+                    ",", 
+                    RowBox[{"FIRE`Private`RestrictionsPossible", "[", 
+                    RowBox[{"FIRE`Private`SSector", "[", 
+                    RowBox[{"0", ",", "##1"}], "]"}], "]"}]}], "]"}]}], ";", 
+                    RowBox[{
+                    RowBox[{"SBasisL", "[", 
+                    RowBox[{"ProblemNumber", ",", "##1"}], "]"}], "=", "0"}], 
+                    ";"}], ")"}], "&"}], ")"}], "/@", "FIRE`Private`dirs"}], 
+                    ";"}]}], "]"}], ";", 
+                    RowBox[{
+                    RowBox[{"SBasis0L", "[", "ProblemNumber", "]"}], "=", 
+                    
+                    RowBox[{"Length", "[", "FIRE`Private`startinglist2", 
+                    "]"}]}], ";", 
+                    RowBox[{"For", "[", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`j", "=", "1"}], ",", 
+                    RowBox[{"FIRE`Private`j", "\[LessEqual]", 
+                    
+                    RowBox[{"Length", "[", "FIRE`Private`startinglist2", 
+                    "]"}]}], ",", 
+                    RowBox[{"FIRE`Private`j", "++"}], ",", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`temp", "=", 
+                    RowBox[{"FIRE`Private`Pol2List", "[", 
+                    RowBox[{
+                    
+                    RowBox[{"FIRE`Private`startinglist2", 
+                    "\[LeftDoubleBracket]", "FIRE`Private`j", 
+                    "\[RightDoubleBracket]"}], ",", "FIRE`Private`options"}], 
+                    "]"}]}], ";", 
+                    RowBox[{
+                    RowBox[{"SBasis0D", "[", 
+                    RowBox[{"ProblemNumber", ",", "FIRE`Private`j"}], "]"}], 
+                    "=", "FIRE`Private`temp"}], ";", 
+                    RowBox[{"For", "[", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`k", "=", "1"}], ",", 
+                    RowBox[{"FIRE`Private`k", "\[LessEqual]", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"SBasis0D", "[", 
+                    RowBox[{"ProblemNumber", ",", "FIRE`Private`j"}], "]"}], 
+                    "]"}]}], ",", 
+                    RowBox[{"FIRE`Private`k", "++"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"SBasis0C", "[", 
+                    RowBox[{"ProblemNumber", ",", "FIRE`Private`j", ",", 
+                    RowBox[{
+                    RowBox[{"SBasis0D", "[", 
+                    RowBox[{"ProblemNumber", ",", "FIRE`Private`j"}], "]"}], 
+                    "\[LeftDoubleBracket]", "FIRE`Private`k", 
+                    "\[RightDoubleBracket]"}]}], "]"}], "=", 
+                    RowBox[{"FIRE`Private`NewCoeffForm", "[", 
+                    RowBox[{"FIRE`Private`tempCoeff", "[", 
+                    RowBox[{"1", ",", 
+                    RowBox[{
+                    RowBox[{"SBasis0D", "[", 
+                    RowBox[{"ProblemNumber", ",", "FIRE`Private`j"}], "]"}], 
+                    "\[LeftDoubleBracket]", "FIRE`Private`k", 
+                    "\[RightDoubleBracket]"}]}], "]"}], "]"}]}], ";"}]}], 
+                    "]"}]}]}], "]"}]}]}], "]"}]}]}, {" "}}, 
+                  GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"FIRE`Prepare\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"],
+               ImageSizeCache->{10., {2.67529296875, 7.32470703125}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"],
+               ImageSizeCache->{10., {2.67529296875, 7.32470703125}}]}, 
+              Dynamic[System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          LightDarkSwitched[
+           GrayLevel[0.8]], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox[
+             TagBox[
+              TooltipBox[
+               StyleBox["\<\" Symbol\"\>", "InformationRowLabel",
+                StripOnInput->False],
+               "\"Symbol\"",
+               TooltipStyle->"TextStyling"],
+              Annotation[#, "Symbol", "Tooltip"]& ], "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\"FIRE`Prepare\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          LightDarkSwitched[
+           GrayLevel[0.8]], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[<|
+   "ObjectType" -> "Symbol", "Usage" -> "FIRE`Prepare", "Documentation" -> 
+    None, "OwnValues" -> None, "UpValues" -> None, "DownValues" -> 
+    Information`InformationValueForm[DownValues, FIRE`Prepare, {FIRE`Prepare[
+         Pattern[FIRE`Private`options, 
+          OptionsPattern[$CellContext`FIRE]]] :> 
+       Module[{FIRE`Private`temp, FIRE`Private`temp2, FIRE`Private`i, 
+          FIRE`Private`j, FIRE`Private`dirs, FIRE`Private`s0, FIRE`Private`s1,
+           FIRE`Private`s2, FIRE`Private`s3, FIRE`Private`startinglist2, 
+          FIRE`Private`k}, FIRE`ProblemNumber = 0; If[
+           Not[
+            ValueQ[FIRE`Replacements]], FIRE`Replacements = {}]; If[
+           Not[
+            ValueQ[FIRE`startinglist]], FIRE`startinglist = Flatten[
+              Outer[ReplaceRepeated[
+                FIRE`Private`IBP[#, #2, FIRE`Private`options], 
+                FIRE`Replacements]& , FIRE`Internal, 
+               Join[FIRE`Internal, FIRE`External]], 1]; If[
+             OptionValue["LI"], FIRE`startinglist = Join[FIRE`startinglist, 
+                Flatten[
+                 Table[
+                  Table[
+                   ReplaceRepeated[
+                    FIRE`LII[
+                    Part[FIRE`External, FIRE`Private`i], 
+                    Part[FIRE`External, FIRE`Private`j]], 
+                    FIRE`Replacements], {FIRE`Private`j, FIRE`Private`i + 1, 
+                    Length[FIRE`External]}], {
+                  FIRE`Private`i, 1, Length[FIRE`External] - 1}], 1]]; Null]]; 
+         FIRE`Private`temp = Select[
+            Variables[FIRE`startinglist], Head[
+              SlotSequence[1]] === Symbol& ]; If[ToLowerCase[
+             ToString[FIRE`Private`temp]] =!= ToString[FIRE`Private`temp], 
+           Print["WARNING! Fermat cannot handle capital letters, please use \
+other simplifiers"]; Print[FIRE`Private`temp]; Null]; 
+         FIRE`ExampleDimension[FIRE`ProblemNumber] = Apply[Max, 
+            Apply[SlotSequence[1]& , 
+             Union[
+              Cases[FIRE`startinglist, 
+               FIRE`Private`Y[
+                Pattern[FIRE`Private`y, 
+                 Blank[]]], {0, Infinity}], 
+              Cases[FIRE`startinglist, 
+               FIRE`Private`Ym[
+                Pattern[FIRE`Private`y, 
+                 Blank[]]], {0, Infinity}], 
+              Cases[FIRE`startinglist, 
+               FIRE`Private`a[
+                Pattern[FIRE`Private`y, 
+                 Blank[]]], {0, Infinity}]], {1}]]; Print["Dimension set to ", 
+           FIRE`ExampleDimension[FIRE`ProblemNumber]]; 
+         If[OptionValue["PositiveIndices"] === Automatic, 
+           FIRE`Private`dirs = FIRE`Private`AllDirections[
+              FIRE`ExampleDimension[FIRE`ProblemNumber], 
+              FIRE`ExampleDimension[FIRE`ProblemNumber]]; Null, 
+           FIRE`Private`dirs = FIRE`Private`AllDirections[
+              FIRE`ExampleDimension[FIRE`ProblemNumber], 
+              OptionValue["PositiveIndices"]]; Null]; 
+         Clear[FIRE`SBasisL, FIRE`SBasis0D, FIRE`SBasis0C, FIRE`SBasis0L, 
+           FIRE`SBasisA, FIRE`SBasisD, FIRE`SBasisC, FIRE`SBasisO, 
+           FIRE`SBasisS, FIRE`SBasisR, FIRE`SBasisRL, FIRE`SBasisM]; 
+         If[Head[FIRE`Private`RegLine] === Symbol, 
+           FIRE`SBasisRL[FIRE`ProblemNumber] = 0, 
+           FIRE`SBasisRL[FIRE`ProblemNumber] = FIRE`Private`RegLine]; 
+         FIRE`Private`startinglist2 = 
+          Map[FIRE`Private`KillDenominator, FIRE`startinglist, {1}]; 
+         If[Head[FIRE`Private`HeavyPoints] === Symbol, 
+           FIRE`HPI[FIRE`ProblemNumber] = {}, FIRE`HPI[FIRE`ProblemNumber] = 
+           FIRE`Private`HeavyPoints]; 
+         If[Head[FIRE`Private`RegLineShift] === Symbol, 
+           FIRE`Private`RegLineShift = (4 - OptionValue["DVar"])/2]; 
+         If[FIRE`SBasisRL[FIRE`ProblemNumber] > 0, FIRE`Private`startinglist2 = 
+           Expand[
+             ReplaceAll[
+             FIRE`Private`startinglist2, FIRE`Private`a[FIRE`Private`RegLine] -> 
+              FIRE`Private`a[FIRE`Private`RegLine] + 
+               FIRE`Private`RegLineShift]]]; If[
+           And[
+           Head[FIRE`SYMMETRIES] === Symbol, Head[FIRE`Private`ODDSYMMETRIES] === 
+            Symbol, Head[FIRE`Private`CONDITIONALSYMMETRIES] === Symbol], 
+           Print["No symmetries"]]; FIRE`Private`s0 = {{
+             Range[
+              FIRE`ExampleDimension[FIRE`ProblemNumber]], 
+             Table[1, {
+               FIRE`ExampleDimension[FIRE`ProblemNumber]}], 
+             Table[0, {
+               FIRE`ExampleDimension[FIRE`ProblemNumber]}]}}; 
+         If[Head[FIRE`SYMMETRIES] === Symbol, FIRE`Private`s1 = {}, 
+           FIRE`Private`s1 = Map[{
+              SlotSequence[1], 
+              Table[1, {
+                FIRE`ExampleDimension[FIRE`ProblemNumber]}], 
+              Table[0, {
+                FIRE`ExampleDimension[FIRE`ProblemNumber]}]}& , 
+             FIRE`Private`SymmetryGroup[FIRE`SYMMETRIES]]]; 
+         If[Head[FIRE`Private`ODDSYMMETRIES] === Symbol, FIRE`Private`s2 = {},
+            FIRE`Private`s2 = Map[{
+              Part[
+               SlotSequence[1], 1], 
+              Part[
+               SlotSequence[1], 2], 
+              Table[0, {
+                FIRE`ExampleDimension[FIRE`ProblemNumber]}]}& , 
+             FIRE`Private`ODDSYMMETRIES]]; 
+         If[Head[FIRE`Private`CONDITIONALSYMMETRIES] === Symbol, 
+           FIRE`Private`s3 = {}, FIRE`Private`s3 = Map[{
+              Part[
+               SlotSequence[1], 1], 
+              Table[1, {
+                FIRE`ExampleDimension[FIRE`ProblemNumber]}], 
+              Part[
+               SlotSequence[1], 2]}& , FIRE`Private`CONDITIONALSYMMETRIES]]; 
+         FIRE`SBasisS[FIRE`ProblemNumber] = 
+          Join[FIRE`Private`s0, FIRE`Private`s1, FIRE`Private`s2, 
+            FIRE`Private`s3]; If[
+           Or[OptionValue["Parallel"] === True, 
+            IntegerQ[
+             OptionValue["Parallel"]]], 
+           If[OptionValue["Parallel"] === True, LaunchKernels[]; Null, 
+             LaunchKernels[
+               OptionValue["Parallel"]]; Null]; 
+           DistributeDefinitions["FIRE`"]; 
+           FIRE`Private`temp2 = 
+            ParallelMap[(
+              FIRE`Private`temp = 
+               If[OptionValue["AutoDetectRestrictions"] === True, 
+                 Or[
+                  FIRE`Private`RestrictionsPossible[
+                   FIRE`Private`SSector[0, 
+                    SlotSequence[1]]], 
+                  FIRE`Private`TestSectorZero[
+                   SlotSequence[1], FIRE`Private`options]], 
+                 FIRE`Private`RestrictionsPossible[
+                  FIRE`Private`SSector[0, 
+                   SlotSequence[1]]]]; {
+                FIRE`SBasisR[FIRE`ProblemNumber, 
+                 SlotSequence[1]], FIRE`Private`temp})& , FIRE`Private`dirs, {
+              1}]; Map[(FIRE`SBasisL[FIRE`ProblemNumber, 
+                SlotSequence[1]] = 0; Null)& , FIRE`Private`dirs]; 
+           Apply[Set, FIRE`Private`temp2, {1}]; Null, 
+           Map[(FIRE`SBasisR[FIRE`ProblemNumber, 
+                SlotSequence[1]] = 
+              If[OptionValue["AutoDetectRestrictions"] === True, 
+                Or[
+                 FIRE`Private`RestrictionsPossible[
+                  FIRE`Private`SSector[0, 
+                   SlotSequence[1]]], 
+                 FIRE`Private`TestSectorZero[
+                  SlotSequence[1], FIRE`Private`options]], 
+                FIRE`Private`RestrictionsPossible[
+                 FIRE`Private`SSector[0, 
+                  SlotSequence[1]]]]; FIRE`SBasisL[FIRE`ProblemNumber, 
+                SlotSequence[1]] = 0; Null)& , FIRE`Private`dirs]; Null]; 
+         FIRE`SBasis0L[FIRE`ProblemNumber] = 
+          Length[FIRE`Private`startinglist2]; 
+         For[FIRE`Private`j = 1, FIRE`Private`j <= 
+           Length[FIRE`Private`startinglist2], 
+           Increment[FIRE`Private`j], 
+           FIRE`Private`temp = FIRE`Private`Pol2List[
+              Part[FIRE`Private`startinglist2, FIRE`Private`j], 
+              FIRE`Private`options]; 
+           FIRE`SBasis0D[FIRE`ProblemNumber, FIRE`Private`j] = 
+            FIRE`Private`temp; 
+           For[FIRE`Private`k = 1, FIRE`Private`k <= Length[
+               FIRE`SBasis0D[FIRE`ProblemNumber, FIRE`Private`j]], 
+             Increment[FIRE`Private`k], 
+             FIRE`SBasis0C[FIRE`ProblemNumber, FIRE`Private`j, 
+                Part[
+                 FIRE`SBasis0D[FIRE`ProblemNumber, FIRE`Private`j], 
+                 FIRE`Private`k]] = FIRE`Private`NewCoeffForm[
+                FIRE`Private`tempCoeff[1, 
+                 Part[
+                  FIRE`SBasis0D[FIRE`ProblemNumber, FIRE`Private`j], 
+                  FIRE`Private`k]]]; Null]]]}], "SubValues" -> None, 
+    "DefaultValues" -> None, "NValues" -> None, "FormatValues" -> None, 
+    "Options" -> None, "Attributes" -> {}, "FullName" -> "FIRE`Prepare"|>, 
+   False]]], "Output",
+ CellChangeTimes->{4.00445309838698*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"56c3ed5d-6bcd-a24b-b73b-0b856d00639a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = True, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox[
+             TagBox[
+              TooltipBox[
+               StyleBox["\<\" Symbol\"\>", "InformationRowLabel",
+                StripOnInput->False],
+               "\"Symbol\"",
+               TooltipStyle->"TextStyling"],
+              Annotation[#, "Symbol", "Tooltip"]& ], "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\"FIRE`LoadRules\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  StyleBox["\<\" Definitions\"\>", "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"Definitions\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "Definitions", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    RowBox[{
+                    RowBox[{"LoadRules", "[", 
+                    
+                    RowBox[{
+                    "FIRE`Private`file_", ",", "FIRE`Private`pn_", ",", 
+                    RowBox[{"FIRE`Private`options", ":", 
+                    RowBox[{"OptionsPattern", "[", "FIRE", "]"}]}]}], "]"}], 
+                    ":=", 
+                    RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", "FIRE`Private`temp", "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`InitializeValues", "[", "]"}], ";", 
+                    RowBox[{"FIRE`Private`temp", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ToExpression", "[", 
+                    RowBox[{"StringReplace", "[", 
+                    RowBox[{"##1", ",", 
+                    RowBox[{"\";\"", "\[Rule]", "\"\""}]}], "]"}], "]"}], 
+                    "&"}], ")"}], "/@", 
+                    RowBox[{"Select", "[", 
+                    RowBox[{
+                    RowBox[{"Import", "[", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`file", "<>", "\".rules\""}], ",", 
+                    "\"List\""}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"StringLength", "[", "##1", "]"}], ">", "5"}], 
+                    "&"}]}], "]"}]}]}], ";", 
+                    RowBox[{"FIRE`Private`temp", "=", 
+                    RowBox[{"Apply", "[", 
+                    RowBox[{"List", ",", "FIRE`Private`temp", ",", 
+                    RowBox[{"{", "1", "}"}]}], "]"}]}], ";", 
+                    RowBox[{"FIRE`Private`temp", "=", 
+                    RowBox[{"Transpose", "[", "FIRE`Private`temp", "]"}]}], 
+                    ";", 
+                    RowBox[{
+                    
+                    RowBox[{"FIRE`Private`temp", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{"Apply", "[", 
+                    RowBox[{"Times", ",", 
+                    
+                    RowBox[{"FIRE`Private`temp", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"{", "2", "}"}]}], "]"}]}], ";", 
+                    RowBox[{
+                    
+                    RowBox[{"FIRE`Private`temp", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{"Apply", "[", 
+                    RowBox[{"Plus", ",", 
+                    
+                    RowBox[{"FIRE`Private`temp", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"{", "1", "}"}]}], "]"}]}], ";", 
+                    RowBox[{"FIRE`Private`temp", "=", 
+                    RowBox[{"Transpose", "[", "FIRE`Private`temp", "]"}]}], 
+                    ";", 
+                    RowBox[{"FIRE`Private`temp", "=", 
+                    RowBox[{"Apply", "[", 
+                    RowBox[{"Rule", ",", "FIRE`Private`temp", ",", 
+                    RowBox[{"{", "1", "}"}]}], "]"}]}], ";", 
+                    RowBox[{
+                    
+                    RowBox[{"FIRE`Private`NewRules", "[", "FIRE`Private`pn", 
+                    "]"}], "=", "FIRE`Private`temp"}], ";", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"FIRE`Private`TryRules", "[", 
+                    RowBox[{
+                    RowBox[{"List", "@@", 
+                    
+                    RowBox[{"##1", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}]}], ",", 
+                    "FIRE`Private`options"}], "]"}], "&"}], ")"}], "/@", 
+                    "FIRE`Private`temp"}], ";"}]}], "]"}]}]}, {" "}}, 
+                  GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}},
+           ScrollPosition->{0., 0.}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"FIRE`LoadRules\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"],
+               ImageSizeCache->{10., {2.67529296875, 7.32470703125}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"],
+               ImageSizeCache->{10., {2.67529296875, 7.32470703125}}]}, 
+              Dynamic[System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          LightDarkSwitched[
+           GrayLevel[0.8]], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox[
+             TagBox[
+              TooltipBox[
+               StyleBox["\<\" Symbol\"\>", "InformationRowLabel",
+                StripOnInput->False],
+               "\"Symbol\"",
+               TooltipStyle->"TextStyling"],
+              Annotation[#, "Symbol", "Tooltip"]& ], "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\"FIRE`LoadRules\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          LightDarkSwitched[
+           GrayLevel[0.8]], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[<|
+   "ObjectType" -> "Symbol", "Usage" -> "FIRE`LoadRules", "Documentation" -> 
+    None, "OwnValues" -> None, "UpValues" -> None, "DownValues" -> 
+    Information`InformationValueForm[
+     DownValues, FIRE`LoadRules, {FIRE`LoadRules[
+         Pattern[FIRE`Private`file, 
+          Blank[]], 
+         Pattern[FIRE`Private`pn, 
+          Blank[]], 
+         Pattern[FIRE`Private`options, 
+          OptionsPattern[$CellContext`FIRE]]] :> 
+       Module[{FIRE`Private`temp}, FIRE`Private`InitializeValues[]; 
+         FIRE`Private`temp = Map[ToExpression[
+             StringReplace[
+              SlotSequence[1], ";" -> ""]]& , 
+            Select[
+             Import[FIRE`Private`file <> ".rules", "List"], StringLength[
+               SlotSequence[1]] > 5& ]]; 
+         FIRE`Private`temp = Apply[List, FIRE`Private`temp, {1}]; 
+         FIRE`Private`temp = Transpose[FIRE`Private`temp]; 
+         Part[FIRE`Private`temp, 2] = Apply[Times, 
+            Part[FIRE`Private`temp, 2], {2}]; 
+         Part[FIRE`Private`temp, 2] = Apply[Plus, 
+            Part[FIRE`Private`temp, 2], {1}]; 
+         FIRE`Private`temp = Transpose[FIRE`Private`temp]; 
+         FIRE`Private`temp = Apply[Rule, FIRE`Private`temp, {1}]; 
+         FIRE`Private`NewRules[FIRE`Private`pn] = FIRE`Private`temp; 
+         Map[FIRE`Private`TryRules[
+            Apply[List, 
+             Part[
+              SlotSequence[1], 1]], FIRE`Private`options]& , 
+           FIRE`Private`temp]; Null]}], "SubValues" -> None, "DefaultValues" -> 
+    None, "NValues" -> None, "FormatValues" -> None, "Options" -> None, 
+    "Attributes" -> {}, "FullName" -> "FIRE`LoadRules"|>, False]]], "Output",
+ CellChangeTimes->{4.0044530984659176`*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"aeb18306-a8b5-694c-97e3-be1206e61571"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Names", "[", "\"\<FIRE`*\>\"", "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{4.0044531584520607`*^9, 4.0044531596377945`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"0b439e85-5876-fd4f-a2b1-424b84c12e61"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Burn\"\>", ",", "\<\"Burning\"\>", ",", "\<\"ClearIBP\"\>", 
+   ",", "\<\"ClearTables\"\>", ",", "\<\"CombineTables\"\>", 
+   ",", "\<\"CompareTables\"\>", ",", "\<\"ConvertStart\"\>", 
+   ",", "\<\"DumpSaveData\"\>", ",", "\<\"EvaluateAndSave\"\>", 
+   ",", "\<\"ExampleDimension\"\>", ",", "\<\"External\"\>", ",", "\<\"F\"\>",
+    ",", "\<\"FindRules\"\>", ",", "\<\"HPI\"\>", ",", "\<\"Internal\"\>", 
+   ",", "\<\"LII\"\>", ",", "\<\"LoadData\"\>", ",", "\<\"LoadLRules\"\>", 
+   ",", "\<\"LoadRules\"\>", ",", "\<\"LoadSBases\"\>", 
+   ",", "\<\"LoadStart\"\>", ",", "\<\"LoadTables\"\>", ",", "\<\"LRules\"\>",
+    ",", "\<\"MasterIntegrals\"\>", ",", "\<\"MaxDimension\"\>", 
+   ",", "\<\"MaxRegion\"\>", ",", "\<\"Number2RealSector\"\>", 
+   ",", "\<\"Prepare\"\>", ",", "\<\"PrepareIBP\"\>", 
+   ",", "\<\"ProblemNumber\"\>", ",", "\<\"Problems\"\>", 
+   ",", "\<\"Propagators\"\>", ",", "\<\"RealRegion\"\>", 
+   ",", "\<\"RealSector2Number\"\>", ",", "\<\"RealSectors\"\>", 
+   ",", "\<\"Replacements\"\>", ",", "\<\"RESTRICTIONS\"\>", 
+   ",", "\<\"SaveData\"\>", ",", "\<\"SaveRulesToFile\"\>", 
+   ",", "\<\"SaveSBases\"\>", ",", "\<\"SaveStart\"\>", 
+   ",", "\<\"SaveTables\"\>", ",", "\<\"SBasis0C\"\>", 
+   ",", "\<\"SBasis0D\"\>", ",", "\<\"SBasis0L\"\>", ",", "\<\"SBasisA\"\>", 
+   ",", "\<\"SBasisC\"\>", ",", "\<\"SBasisD\"\>", ",", "\<\"SBasisH\"\>", 
+   ",", "\<\"SBasisL\"\>", ",", "\<\"SBasisM\"\>", ",", "\<\"SBasisN\"\>", 
+   ",", "\<\"SBasisO\"\>", ",", "\<\"SBasisR\"\>", ",", "\<\"SBasisRL\"\>", 
+   ",", "\<\"SBasisS\"\>", ",", "\<\"SectorNumber\"\>", 
+   ",", "\<\"SolveSectors\"\>", ",", "\<\"startinglist\"\>", 
+   ",", "\<\"SYMMETRIES\"\>", ",", "\<\"Tables2Masters\"\>", 
+   ",", "\<\"Tables2Rules\"\>", ",", "\<\"ToLeeRule\"\>", 
+   ",", "\<\"TransformRules\"\>", ",", "\<\"WriteRules\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{4.00445316041901*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"efb7b82c-406f-cf4c-be5d-2e2508ce56ea"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"?", "FIRE`Burn"}], "\n", "FIRE`Burning", 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{4.0044531727658615`*^9, 4.0044531745870953`*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"37b83299-9406-2f42-a045-d88bfa86108f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = True, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox[
+             TagBox[
+              TooltipBox[
+               StyleBox["\<\" Symbol\"\>", "InformationRowLabel",
+                StripOnInput->False],
+               "\"Symbol\"",
+               TooltipStyle->"TextStyling"],
+              Annotation[#, "Symbol", "Tooltip"]& ], "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\"FIRE`Burn\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[
+           TagBox[GridBox[{
+              {
+               StyleBox[
+                TagBox[
+                 TooltipBox[
+                  StyleBox["\<\" Definitions\"\>", "InformationRowLabel",
+                   StripOnInput->False],
+                  "\"Definitions\"",
+                  TooltipStyle->"TextStyling"],
+                 Annotation[#, "Definitions", "Tooltip"]& ], "DialogStyle",
+                StripOnInput->False]},
+              {
+               TemplateBox[{"\"\[ThinSpace]\"", 
+                 GridBox[{{
+                    RowBox[{
+                    RowBox[{"Burn", "[", "]"}], ":=", 
+                    RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", "FIRE`Private`temp", "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{"Burning", ",", 
+                    RowBox[{
+                    RowBox[{"Print", "[", "\"FIRE already burning\"", "]"}], 
+                    ";", 
+                    RowBox[{"FIRE`Private`Retun", "[", "False", "]"}]}]}], 
+                    "]"}], ";", 
+                    RowBox[{"FIRE`Private`EnumerateSectors", "/@", 
+                    RowBox[{"FIRE`Private`AllProblems", "[", "]"}]}], ";", 
+                    RowBox[{"MaxDimension", "[", "]"}], ";", 
+                    RowBox[{"FIRE`Private`EnumerateRealSectors", "[", "]"}], 
+                    ";", 
+                    RowBox[{"Burning", "=", "True"}]}]}], "]"}]}]}, {" "}}, 
+                  GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                  DefaultBaseStyle -> "Column", 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                "RowDefault"]}
+             },
+             DefaultBaseStyle->"Column",
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"],
+           FrameMargins->{{6, 0}, {3, 6}},
+           ScrollPosition->{0., 0.}], "\<\"\"\>"},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"FIRE`Burn\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"],
+               ImageSizeCache->{10., {2.67529296875, 7.32470703125}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"],
+               ImageSizeCache->{10., {2.67529296875, 7.32470703125}}]}, 
+              Dynamic[System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          LightDarkSwitched[
+           GrayLevel[0.8]], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox[
+             TagBox[
+              TooltipBox[
+               StyleBox["\<\" Symbol\"\>", "InformationRowLabel",
+                StripOnInput->False],
+               "\"Symbol\"",
+               TooltipStyle->"TextStyling"],
+              Annotation[#, "Symbol", "Tooltip"]& ], "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\"FIRE`Burn\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          LightDarkSwitched[
+           GrayLevel[0.8]], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[<|
+   "ObjectType" -> "Symbol", "Usage" -> "FIRE`Burn", "Documentation" -> None, 
+    "OwnValues" -> None, "UpValues" -> None, "DownValues" -> 
+    Information`InformationValueForm[
+     DownValues, FIRE`Burn, {
+      FIRE`Burn[] :> 
+       Module[{FIRE`Private`temp}, 
+         If[FIRE`Burning, Print["FIRE already burning"]; 
+           FIRE`Private`Retun[False]]; Map[FIRE`Private`EnumerateSectors, 
+           FIRE`Private`AllProblems[]]; FIRE`MaxDimension[]; 
+         FIRE`Private`EnumerateRealSectors[]; FIRE`Burning = True]}], 
+    "SubValues" -> None, "DefaultValues" -> None, "NValues" -> None, 
+    "FormatValues" -> None, "Options" -> None, "Attributes" -> {}, "FullName" -> 
+    "FIRE`Burn"|>, False]]], "Output",
+ CellChangeTimes->{4.0044531752429047`*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"b1c95534-a4ba-ed48-93ea-540da6822479"],
+
+Cell[BoxData["Burning"], "Output",
+ CellChangeTimes->{4.0044531752460423`*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"b505bd87-2f2a-4248-b9ce-508313dbc266"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "$Path"}]], "Input",
+ CellChangeTimes->{{4.004453190044203*^9, 4.004453191544792*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"36453639-da6e-a644-998c-28abc4c2d64c"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"C:\\\\Users\\\\king\\\\AppData\\\\Roaming\\\\Wolfram\\\\\
+DocumentationIndices\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\SystemFiles\\\\Links\"\>", 
+   ",", "\<\"C:\\\\Users\\\\king\\\\AppData\\\\Roaming\\\\Wolfram\\\\Kernel\"\
+\>", ",", \
+"\<\"C:\\\\Users\\\\king\\\\AppData\\\\Roaming\\\\Wolfram\\\\Autoload\"\>", 
+   ",", "\<\"C:\\\\Users\\\\king\\\\AppData\\\\Roaming\\\\Wolfram\\\\\
+Applications\"\>", ",", "\<\"C:\\\\ProgramData\\\\Wolfram\\\\Kernel\"\>", 
+   ",", "\<\"C:\\\\ProgramData\\\\Wolfram\\\\Autoload\"\>", 
+   ",", "\<\"C:\\\\ProgramData\\\\Wolfram\\\\Applications\"\>", 
+   ",", "\<\".\"\>", ",", "\<\"C:\\\\Users\\\\king\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\AddOns\\\\Packages\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\SystemFiles\\\\Autoload\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\AddOns\\\\Autoload\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\AddOns\\\\Applications\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\AddOns\\\\ExtraPackages\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\SystemFiles\\\\Kernel\\\\Packages\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\Documentation\\\\English\\\\System\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\SystemFiles\\\\Data\\\\ICC\"\>", 
+   ",", "\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Wolfram\\\\15.0\\\\Documentation\\\\ChineseSimplified\\\\System\\\
+\\\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{4.0044531924936085`*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"dc10e7be-c445-1a4b-b980-d02c216b5b50"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"cd", "/", "mnt"}], "/", "f"}], "/", "fire"}], "-", 
+    RowBox[{"main", "/", "FIRE7"}]}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"find", ".", 
+      RowBox[{"-", "maxdepth"}]}], " ", "3"}], "-", 
+    RowBox[{"type", " ", "f"}], "-", "executable"}]}]}]], "Input",
+ CellChangeTimes->{{4.0044532081518555`*^9, 4.004453210467785*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"28f0ade6-8541-a141-9cc6-d8a29574b0f1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   FractionBox["main", "FIRE7"]}], "+", 
+  FractionBox["cd", 
+   RowBox[{"f", " ", "fire", " ", "mnt"}]]}]], "Output",
+ CellChangeTimes->{4.004453211277817*^9},
+ CellLabel->"Out[21]=",ExpressionUUID->"ceeda7fe-50b7-1b4b-9cae-3330026c6543"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "executable"}], "-", 
+  RowBox[{"f", " ", "type"}], "+", 
+  RowBox[{"3", " ", 
+   RowBox[{"find", ".", 
+    RowBox[{"(", 
+     RowBox[{"-", "maxdepth"}], ")"}]}]}]}]], "Output",
+ CellChangeTimes->{4.004453211277817*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"9b7e065b-5bbf-a548-bcfc-fc686a2c412b"]
+}, Open  ]]
+},
+WindowSize->{583.5, 520.5},
+WindowMargins->{{97.125, Automatic}, {32.25, Automatic}},
+FrontEndVersion->"15.0 for Microsoft Windows (64-bit) (July 2, 2026)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"55a28070-b452-8345-9ccb-f1ed6e153bc8"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 443, 9, 66, "Input",ExpressionUUID->"e24b0f09-bd6d-a142-afa0-744fffffd7cc"],
+Cell[1022, 33, 430, 9, 51, "Output",ExpressionUUID->"4701b657-6a96-304a-9f31-0dbb1ddaba85"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1489, 47, 465, 9, 66, "Input",ExpressionUUID->"8ec13bf7-937d-b74c-9ec2-0693f0b3e62e"],
+Cell[1957, 58, 4023, 57, 1459, "Output",ExpressionUUID->"c725ddc7-a6d7-d948-9b72-d178aeb5347f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6017, 120, 759, 20, 123, "Input",ExpressionUUID->"a9d6cb24-a16f-f945-bbae-08dc1a603ba6"],
+Cell[6779, 142, 280, 7, 46, "Output",ExpressionUUID->"ffa3da92-ce71-0f41-9e20-fbbc1ccf5e7f"],
+Cell[7062, 151, 867, 24, 70, "Output",ExpressionUUID->"508894b7-2afb-1647-9320-f30ba7cce71d"]
+}, Open  ]],
+Cell[7944, 178, 149, 3, 47, "Input",ExpressionUUID->"921813b5-82a2-b742-ac6c-8cf50cd97e4b"],
+Cell[CellGroupData[{
+Cell[8118, 185, 305, 5, 85, "Input",ExpressionUUID->"a62f3a60-c386-0646-9187-d7ebf61cf637"],
+Cell[8426, 192, 235, 4, 32, "Output",ExpressionUUID->"2225fc27-b369-dd45-9431-54c93f58e316"],
+Cell[8664, 198, 256, 5, 32, "Output",ExpressionUUID->"6cacf628-fb4d-f64f-bfd5-3b88dfb6aac1"],
+Cell[8923, 205, 247, 5, 32, "Output",ExpressionUUID->"3ce6f2b4-f271-8540-ad67-8eef63fc5ce3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9207, 215, 242, 3, 66, "Input",ExpressionUUID->"6dce8cee-48bd-1340-8ed0-7ff421a9aab4"],
+Cell[9452, 220, 211, 3, 32, "Output",ExpressionUUID->"51ae58d1-ed92-c943-9f41-c5c25254af65"],
+Cell[9666, 225, 183, 2, 32, "Output",ExpressionUUID->"a5e0cfec-e9e4-7c47-a915-cb6c667e847d"],
+Cell[9852, 229, 177, 2, 32, "Output",ExpressionUUID->"affff84a-4f81-b340-bae2-07aa8b416678"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10066, 236, 430, 9, 104, "Input",ExpressionUUID->"f242cae9-fd59-3844-9760-02fdce0c69cd"],
+Cell[10499, 247, 151, 2, 32, "Output",ExpressionUUID->"4d40d69f-7da9-944d-bed4-6eacdaaa20bb"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10687, 254, 255, 4, 47, "Input",ExpressionUUID->"94dc3f35-d8f8-9a4f-b155-b53b91b74276"],
+Cell[10945, 260, 200, 4, 22, "Print",ExpressionUUID->"1e6bfb12-aba8-794b-b708-43fbddc5d171"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11182, 269, 335, 7, 85, "Input",ExpressionUUID->"95d13d11-db18-844e-8908-d9abe5dbfbf6"],
+Cell[11520, 278, 11205, 277, 334, "Output",ExpressionUUID->"478b42ce-6264-454f-ae4c-753d7c001969"],
+Cell[22728, 557, 41356, 903, 2118, "Output",ExpressionUUID->"56c3ed5d-6bcd-a24b-b73b-0b856d00639a"],
+Cell[64087, 1462, 15089, 359, 487, "Output",ExpressionUUID->"aeb18306-a8b5-694c-97e3-be1206e61571"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[79213, 1826, 297, 6, 66, "Input",ExpressionUUID->"0b439e85-5876-fd4f-a2b1-424b84c12e61"],
+Cell[79513, 1834, 2017, 32, 260, "Output",ExpressionUUID->"efb7b82c-406f-cf4c-be5d-2e2508ce56ea"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[81567, 1871, 300, 6, 85, "Input",ExpressionUUID->"37b83299-9406-2f42-a045-d88bfa86108f"],
+Cell[81870, 1879, 11205, 277, 334, "Output",ExpressionUUID->"b1c95534-a4ba-ed48-93ea-540da6822479"],
+Cell[93078, 2158, 157, 2, 32, "Output",ExpressionUUID->"b505bd87-2f2a-4248-b9ce-508313dbc266"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[93272, 2165, 211, 3, 47, "Input",ExpressionUUID->"36453639-da6e-a644-998c-28abc4c2d64c"],
+Cell[93486, 2170, 1886, 34, 431, "Output",ExpressionUUID->"dc10e7be-c445-1a4b-b980-d02c216b5b50"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[95409, 2209, 527, 14, 66, "Input",ExpressionUUID->"28f0ade6-8541-a141-9cc6-d8a29574b0f1"],
+Cell[95939, 2225, 279, 7, 46, "Output",ExpressionUUID->"ceeda7fe-50b7-1b4b-9cae-3330026c6543"],
+Cell[96221, 2234, 337, 9, 32, "Output",ExpressionUUID->"9b7e065b-5bbf-a548-bcfc-fc686a2c412b"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
